@@ -1,2 +1,5 @@
-<button (click)="increment()">Zwiększ</button>
-<button (click)="decrement()">Zmniejsz</button>
+<div>
+    <button (click)="decrement()" mat-raised-button color="warn">Zmniejsz</button>
+    <button (click)="increment()" mat-raised-button color="accent">Zwiększ</button>
+    <p>Licznik: {{counter$ | async}}</p>
+</div>

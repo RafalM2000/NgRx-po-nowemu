@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { INCREMENT, DECREMENT } from './reducer';
+
+interface AppState {
+  counter: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -11,16 +14,16 @@ import { INCREMENT, DECREMENT } from './reducer';
 export class AppComponent {
   counter$: Observable<number>;
 
-  constructor(private store: Store<any>) {
-    this.counter$ = store.select('counterState');
+
+  constructor(private store: Store<AppState>) {
+    this.counter$ = store.select('counter');
   }
 
   increment(): void {
-    this.store.dispatch({type: INCREMENT});
+    this.store.dispatch({type: 'PLUS'});
   }
 
   decrement(): void {
-    this.store.dispatch({type: DECREMENT});
+    this.store.dispatch({type: 'MINUS'});
   }
-
 }
