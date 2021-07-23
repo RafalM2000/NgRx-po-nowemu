@@ -1,5 +1,10 @@
 <div>
+    <h2>Komponent nadrzędny</h2>
     <button (click)="decrement()" mat-raised-button color="warn">Zmniejsz</button>
     <button (click)="increment()" mat-raised-button color="accent">Zwiększ</button>
-    <p>Licznik: {{counter$ | async}}</p>
+    <p>Licznik rodzica: {{counter$ | async}}</p>
+
+    <app-child></app-child>
 </div>
+
+
