@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.component';
+import { zero } from '../counter.actions';
 
 @Component({
   selector: 'app-child',
@@ -15,9 +16,7 @@ export class ChildComponent implements OnInit {
   constructor(private store: Store<AppState>) {
   this.counterJunior$ = store.select('counter');
 }
-
   ngOnInit(): void {
-    setInterval(() => this.store.dispatch({type: 'ZERO'}), 5000);
+    setInterval(() => this.store.dispatch(zero()), 5000);
   }
-
 }

@@ -1,11 +1,16 @@
-import { Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { plus, minus, zero } from './counter.actions';
 
+export const initialState = 0;
 
-export function counterReducer(state = 0, action: Action): number {
-    switch (action.type) {
-        case 'PLUS': return state + 1;
-        case 'MINUS': return state - 1;
-        case 'ZERO': return state = 0;
-        default: return state;
-    }
-}
+const _counterReducer = createReducer(
+    initialState, 
+    on(plus, (state) => state +1),
+    on(minus, (state) => state -1),
+    on(zero, (state) => state = 0)
+    );
+    
+    export function counterReducer(state, action) {
+        return _counterReducer(state, action);
+      }
+    

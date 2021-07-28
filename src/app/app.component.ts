@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { plus, minus } from './counter.actions';
 
 export interface AppState {
   counter: number;
@@ -20,10 +21,11 @@ export class AppComponent {
   }
 
   increment(): void {
-    this.store.dispatch({type: 'PLUS'});
+    this.store.dispatch(plus());
   }
 
   decrement(): void {
-    this.store.dispatch({type: 'MINUS'});
+    this.store.dispatch(minus());
   }
 }
+
