@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { plus, minus } from './counter.actions';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 export interface AppState {
   counter: number;
@@ -12,12 +14,24 @@ export interface AppState {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+  dataFormModel: FormGroup;
   counter$: Observable<number>;
 
-
-  constructor(private store: Store<AppState>) {
+  constructor(nameForm: FormBuilder, private store: Store<AppState>) {
     this.counter$ = store.select('counter');
+
+    this.dataFormModel = nameForm.group({
+      counterName: ['']
+    });
+
+    this.dataFormModel.get('counterName').valueChanges.pipe(
+      debounceTime(1000)
+    )
+    .subscribe (
+      value => console.log(value)
+    );
   }
 
   increment(): void {

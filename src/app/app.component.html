@@ -2,8 +2,16 @@
     <h2>Komponent nadrzędny</h2>
     <button (click)="decrement()" mat-raised-button color="warn">Zmniejsz</button>
     <button (click)="increment()" mat-raised-button color="accent">Zwiększ</button>
-    <p>Licznik rodzica: {{counter$ | async}}</p>
-
+    <p>Licznik rodzica: {{counter$ | async}}</p> 
+        <form [formGroup] = "dataFormModel">
+            <mat-form-field class="full-width">
+                <mat-label>Nazwa</mat-label>
+                <input 
+                type="text" 
+                matInput
+                formControlName = "counterName">
+            </mat-form-field>
+        </form>
     <app-child></app-child>
 </div>
 
