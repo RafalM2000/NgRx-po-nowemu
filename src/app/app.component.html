@@ -1,8 +1,10 @@
-<div>
+<div class = "container">
     <h2>Komponent nadrzędny</h2>
     <button (click)="decrement()" mat-raised-button color="warn">Zmniejsz</button>
     <button (click)="increment()" mat-raised-button color="accent">Zwiększ</button>
-    <p>Licznik rodzica: {{counter$ | async}}</p> 
+    <div *ngIf="counter$ | async as c">
+         <p>Licznik rodzica: {{ c.counter }}</p>
+    </div>    
         <form [formGroup] = "dataFormModel">
             <mat-form-field class="full-width">
                 <mat-label>Nazwa</mat-label>

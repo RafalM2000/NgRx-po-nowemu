@@ -12,11 +12,14 @@ import { zero } from '../counter.actions';
 })
 export class ChildComponent implements OnInit {
   counterJunior$: Observable<number>;
+  counterName$: Observable<string>;
 
   constructor(private store: Store<AppState>) {
   this.counterJunior$ = store.select('counter');
+  this.counterName$ = store.select('counterName');
 }
   ngOnInit(): void {
     setInterval(() => this.store.dispatch(zero()), 5000);
   }
 }
+

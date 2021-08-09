@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './reducer';
+import { counterReducer} from './reducer';
 import { ChildComponent } from './child/child.component';
 
 @NgModule({
@@ -21,10 +21,13 @@ import { ChildComponent } from './child/child.component';
     MatInputModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({counter: counterReducer})
+    StoreModule.forRoot(
+      {counter: counterReducer,
+       counterName: counterReducer
+      },
+      )
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }

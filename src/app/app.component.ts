@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { plus, minus } from './counter.actions';
+import { plus, minus, name } from './counter.actions';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
 export interface AppState {
   counter: number;
+  counterName: string;
 }
 
 @Component({
@@ -30,14 +31,16 @@ export class AppComponent {
       debounceTime(1000)
     )
     .subscribe (
-      value => console.log(value)
-    );
+      value => {
+        console.log(value);
+        store.dispatch(name({ counterName: value }));
+      }
+   );
   }
 
   increment(): void {
     this.store.dispatch(plus());
   }
-
   decrement(): void {
     this.store.dispatch(minus());
   }

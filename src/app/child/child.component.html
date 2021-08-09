@@ -1,5 +1,9 @@
 <div>
     <h3>Komponent potomny</h3>
-    <p>Licznik potomka {{ counterJunior$ | async }}</p>
+    <div *ngIf="counterJunior$ | async as c">
+        <p>Licznik potomka: {{ c.counter }}</p>
+    </div>
+    <div *ngIf="counterName$ | async as n">
+        <p>Nazwa Licznika: {{ n.counterName }}</p>
+    </div>
 </div>
-
